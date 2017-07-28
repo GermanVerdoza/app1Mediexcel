@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block titulo %} - {{ regresar }} no encontrado{% endblock %}
+
+{% block contenido %}
+<h1 class="display-2 hidden-xs-down">
+            El {{ objeto }} no se encuentra registrado
+            </h1>
+            <p class="lead hidden-xs-down">
+                Haz clic <a href="{{ regresar }}">AQUI</a> para volver a la
+                pagina de inicio
+            </p>
+
+{% endblock contenido %}

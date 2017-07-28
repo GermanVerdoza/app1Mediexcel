@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block titulo %} - Consultar Consejos{% endblock %}
+
+{% block contenido %}
+<h1 class="display-2 hidden-xs-down">
+            Consultar Consejos
+            </h1>
+            <p class="lead hidden-xs-down">Seleccione un consejo para ver su informacion y agregar comentarios</p>
+    <div class="list-group">
+    {% if object_list %}
+{% for consejo in object_list %}
+    <a href="{% url 'vistaConsejo' consejo.id %}" class="list-group-item"><strong>{{ consejo.titulo }}</strong> &nbsp;en {{ consejo.juego.nombre }}</a>
+        {% endfor %}
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'consultaconsejos' %}?page={{ page_obj.previous_page_number }}">Anterior</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'consultaconsejos' %}?page={{ page_obj.next_page_number }}">Siguiente</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+    {% else %}
+        No hay consejos Registrados.
+    {% endif %}
+    </div>
+{% endblock contenido %}

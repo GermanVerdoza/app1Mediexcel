@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block titulo %} - Agregar Juego{% endblock %}
+
+{% block contenido %}
+<h1 class="display-2 hidden-xs-down">
+            Agregar Juego
+            </h1>
+            <p class="lead hidden-xs-down">Registre un juego para comenzar a incluir consejos</p>
+    {% if form.errors %}
+                            <div class="alert alert-danger">
+                            {% for key,value in form.errors.items %}
+                            <strong>{{ key }}!</strong> {{ value }}
+                            {% endfor %}
+</div>
+                            {% endif %}
+<div class="col-lg-9 col-md-8">
+                    <div class="table-responsive">
+                        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                        <table class="table table-striped" width="auto">
+                            {% include 'formsnnipet.html' %}
+                            <tr>
+                                <td colspan="2" style="text-align: center">
+                                    <input type="submit" value="GUARDAR" class="btn btn-primary">
+                                </td>
+                            </tr>
+                            </table>
+                            </form>
+                        </div>
+</div>
+{% endblock contenido %}

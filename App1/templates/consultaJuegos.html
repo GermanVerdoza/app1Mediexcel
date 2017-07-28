@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block titulo %} - Consultar Juegos{% endblock %}
+
+{% block contenido %}
+<h1 class="display-2 hidden-xs-down">
+            Consultar Juegos
+            </h1>
+            <p class="lead hidden-xs-down">Seleccione un juego para ver su informacion y agregar consejos</p>
+    <div class="list-group">
+{% if object_list %}
+{% for juego in object_list %}
+    <a href="{% url 'vistaJuego' juego.id %}" class="list-group-item">{{ juego.nombre }}</a>
+        {% endfor %}
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'consultajuego' %}?page={{ page_obj.previous_page_number }}">Anterior</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'consultajuego' %}?page={{ page_obj.next_page_number }}">Siguiente</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+    {% else %}
+        No hay Juegos Registrados.
+    {% endif %}
+    </div>
+{% endblock contenido %}

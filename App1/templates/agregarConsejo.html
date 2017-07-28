@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block titulo %} - Agregar Consejo{% endblock %}
+
+{% block contenido %}
+<h1 class="display-2 hidden-xs-down">
+            Agregar Consejo
+            </h1>
+            <p class="lead hidden-xs-down">Registre un consejo para
+                comenzar a incluir comentarios</p>
+{#    {% if form.errors %}#}
+{#                            <div class="alert alert-danger">#}
+{#                            {% for key,value in form.errors %}#}
+{#                            <strong>{{ key }}!</strong> {{ value }}#}
+{#                            {% endfor %}#}
+{#</div>#}
+{#                            {% endif %}#}
+<div class="col-lg-9 col-md-8">
+                        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                            {% crispy form %}
+                        </form>
+</div>
+{% endblock contenido %}

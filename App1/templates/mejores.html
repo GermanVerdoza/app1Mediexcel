@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block titulo %} - Mejores Consejos{% endblock %}
+
+{% block contenido %}
+<h1 class="display-2 hidden-xs-down">
+            Mejor Consejo por Juego
+            </h1>
+            <p class="lead hidden-xs-down">A continuacion se muestra el
+                mejor consejo de cada juego con su cantidad de votos.</p>
+<div class="col-lg-9 col-md-8">
+                    <div class="table-responsive">
+                        <table class="table table-striped" width="auto">
+                            <thead class="thead-inverse">
+                                <th>Nombre del Juego</th>
+                                <th>Titulo del Consejo</th>
+                                <th>Cantidad de votos</th>
+                            </thead>
+                            <tbody>
+                            {% for item in lista %}
+                                <tr>
+                                    <td>{{ item.juego__nombre }}</td>
+                                    <td><a class="alert-link"
+                                           href="Consejos/{{ item.id }}"
+                                    >{{ item.titulo }}
+                                    </a> </td>
+                                    <td>{{ item.votos }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            </table>
+                    <a class="btn btn-success" href="
+{% url 'mejorPdf' %}">Imprimir</a>
+                        </div>
+</div>
+{% endblock contenido %}

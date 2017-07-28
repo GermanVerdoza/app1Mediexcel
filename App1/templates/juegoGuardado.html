@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block titulo %} - Juego Guardado{% endblock %}
+
+{% block contenido %}
+{% if accion == 'exito' %}
+<h1 class="display-2 hidden-xs-down">
+            {{ clave }} Agregado con Exito
+            </h1>
+            <p class="lead hidden-xs-down">{% if clave == 'Juego' %}
+                Ya puede comenzar a incluir consejos.
+                {% elif clave == 'Consejo' %}
+                Ya puede comenzar a incluir comentarios.
+                {% endif %} <a href="{{ regresar }}">Regresar</a> </p>
+
+{% else %}
+<h1 class="display-2 hidden-xs-down">
+    Error al cargar
+            </h1>
+            <p class="lead hidden-xs-down"><a href="{{ regresar }}">Regresar</a> </p>
+{% endif %}
+{% endblock contenido %}

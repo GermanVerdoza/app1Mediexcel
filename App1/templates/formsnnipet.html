@@ -1,0 +1,6 @@
+{% for field in form %}
+<tr>
+<th style="text-align: right">{{ field.label_tag }}</th>
+<td style="text-align: left">{{ field }}</td>
+</tr>
+{% endfor %}
